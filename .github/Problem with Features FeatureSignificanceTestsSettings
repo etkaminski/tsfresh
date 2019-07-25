@@ -1,0 +1,41 @@
+Hello Max,
+
+First of all thankyou so much for tsfresh. i  am trying to change the fdr_level and i am having a problem:
+FeatureSignificanceTestsSettings can somehow not be imported and therefore I am not being able to change the fdr. 
+I am using Windows 10, Tsfresh 0.12.0. already here the problem is presented: 
+
+import pandas as pd
+import numpy as np
+from sklearn import preprocessing
+import math
+import matplotlib.pyplot as plt
+import scipy 
+from tsfresh import extract_features
+from tsfresh import select_features
+from tsfresh import extract_relevant_features
+
+%matplotlib inline
+from tsfresh import defaults
+from tsfresh.utilities.dataframe_functions import check_for_nans_in_columns
+from tsfresh.feature_selection.relevance import calculate_relevance_table
+from tsfresh.examples.robot_execution_failures import download_robot_execution_failures, load_robot_execution_failures
+from tsfresh import extract_features, extract_relevant_features, select_features, feature_selection  
+from tsfresh.utilities.dataframe_functions import impute
+from tsfresh.feature_extraction import ComprehensiveFCParameters
+
+# neither if i write from tsfresh.feature_selection.settings import FeatureSignificanceTestsSettings
+from tsfresh.feature_selection import FeatureSignificanceTestsSettings
+sett = FeatureSignificanceTestsSettings()
+sett.fdr_level = 0.99 # increases the risk of unimportant features being extracted
+sett.write_selection_report = True # will create a report with more information
+
+ImportError: cannot import name 'FeatureSignificanceTestsSettings'
+
+
+I tried with tsfresh.feature_selection.settings import FeatureSignificanceTestsSettings and didnt work.
+I also tried downgrading tsfresh to older versions and still no results. 
+
+I would thankyou so much if you could find the reason for my problem 
+
+I wish you a nice day :)
+Erik 
